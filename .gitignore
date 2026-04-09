@@ -1,0 +1,25 @@
+# ===== Backend (Spring Boot) =====
+backend/target/
+backend/.mvn/
+backend/*.iml
+backend/.idea/
+backend/.classpath
+backend/.project
+backend/.settings/
+
+# application.properties 含有敏感資訊（DB密碼、API Key）
+backend/src/main/resources/application.properties
+
+# ===== Frontend (React) =====
+frontend/node_modules/
+frontend/build/
+frontend/.env
+frontend/.env.local
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== DB =====
+#SQL scripts 含敏感資訊的真實檔案
+db/init/01_create_login.sql

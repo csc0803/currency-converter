@@ -1,0 +1,19 @@
+spring.application.name=currency-converter
+
+# MSSQL
+spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=currency_db;encrypt=false
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+# JPA
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
+
+# ExchangeRate-API
+exchangerate.api.key=your_api_key_here
+exchangerate.api.base-url=https://v6.exchangerate-api.com/v6
+
+# CORS
+frontend.url=http://localhost:3000

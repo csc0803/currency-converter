@@ -1,0 +1,14 @@
+USE master;
+
+-- 避免重複建立報錯
+IF NOT EXISTS (
+    SELECT name FROM sys.server_principals WHERE name = 'currency_user'
+)
+BEGIN
+    CREATE LOGIN currency_user WITH PASSWORD = 'your_password_here';
+    PRINT 'Login currency_user 建立成功';
+END
+ELSE
+BEGIN
+    PRINT 'Login currency_user 已存在，略過';
+END
