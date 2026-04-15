@@ -1,14 +1,13 @@
 package com.chun.currency.repository;
 
-import com.chun.currency.entity.ExchangeRate;
 import com.chun.currency.entity.ExchangeRateHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface ExchangeRateHistoryRepository extends JpaRepository<ExchangeRateHistory, Long> {
 
-    Optional<ExchangeRate> findByBaseCurrencyAndTargetCurrency(
+    List<ExchangeRateHistory> findByBaseCurrencyAndTargetCurrencyOrderByFetchedAtDesc(
             String baseCurrency, String targetCurrency
     );
 }
