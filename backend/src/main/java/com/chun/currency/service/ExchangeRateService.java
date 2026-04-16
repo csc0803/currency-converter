@@ -25,11 +25,11 @@ public class ExchangeRateService {
     public void fetchAndSaveRates(String baseCurrency){
 
         // 1. 呼叫外部API
-        Map<String, Double> rates = exchangeRateClient.fetchLatestRates(baseCurrency);
+        Map<String, Number> rates = exchangeRateClient.fetchLatestRates(baseCurrency);
         LocalDateTime now = LocalDateTime.now();
 
         rates.forEach((targetCurrency, rate) -> {
-            BigDecimal rateValue = BigDecimal.valueOf(rate);
+            BigDecimal rateValue = new BigDecimal(rate.toString());
 
             // 2. 更新exchange_rates(有就更新，沒有就新增)
             ExchangeRate exchangeRate = exchangeRateRepository

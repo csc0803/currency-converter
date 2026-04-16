@@ -18,7 +18,7 @@ public class ExchangeRateClient {
     private final RestTemplate restTemplate = new RestTemplate();
 
     @SuppressWarnings("unchecked")
-    public Map<String, Double> fetchLatestRates(String baseCurrency){
+    public Map<String, Number> fetchLatestRates(String baseCurrency){
         String url = String.format("%s/%s/latest/%s", baseUrl, apiKey, baseCurrency);
 
         Map<String, Object> response = restTemplate.getForObject(url, Map.class);
@@ -27,7 +27,7 @@ public class ExchangeRateClient {
             throw new RuntimeException("無法取得匯率資料，請確認 API Key 是否正確");
         }
 
-        return (Map<String, Double>) response.get("conversion_rates");
+        return (Map<String, Number>) response.get("conversion_rates");
     }
 
 }
