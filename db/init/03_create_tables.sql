@@ -46,3 +46,27 @@ ELSE
 BEGIN
     PRINT 'exchange_rate_histories 已存在，略過';
 END
+
+-- Table 3: conversion_records（操作紀錄）
+IF NOT EXISTS (
+    SELECT name FROM sys.tables WHERE name = 'conversion_records'
+)
+BEGIN
+    CREATE TABLE conversion_records (
+        id               BIGINT IDENTITY(1,1) NOT NULL,
+        from_currency    CHAR(3)              NOT NULL,
+        to_currency      CHAR(3)              NOT NULL,
+        amount           DECIMAL(15, 4)       NOT NULL,
+        converted_amount DECIMAL(15, 4)       NOT NULL,
+        exchange_rate    DECIMAL(18, 6)       NOT NULL,
+        created_at       DATETIME2            NOT NULL DEFAULT GETDATE(),
+
+        CONSTRAINT PK_conversion_records PRIMARY KEY (id)
+    );
+
+    PRINT 'conversion_records 建立成功';
+END
+ELSE
+BEGIN
+    PRINT 'conversion_records 已存在，略過';
+END
