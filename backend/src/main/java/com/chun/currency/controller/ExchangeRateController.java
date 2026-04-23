@@ -3,13 +3,13 @@ package com.chun.currency.controller;
 import com.chun.currency.service.ExchangeRateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/exchange-rates")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RequiredArgsConstructor
 public class ExchangeRateController {
 
@@ -22,6 +22,11 @@ public class ExchangeRateController {
         exchangeRateService.fetchAndSaveRates(baseCurrency.toUpperCase());
 
         return ResponseEntity.ok("匯率更新成功");
+    }
+
+    @GetMapping("/currencies")
+    public ResponseEntity<List<String>> getAvailableCurrencies(){
+        return ResponseEntity.ok(exchangeRateService.getAvailableCurrencies());
     }
 
 }
