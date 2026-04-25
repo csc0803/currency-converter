@@ -28,6 +28,7 @@ public class ExchangeRateScheduler {
                 .map(rate -> rate.getUpdatedAt().toLocalDate().isBefore(LocalDate.now()))
                 .orElse(true);
 
+
         if(isOutdated){
             log.info("匯率資料已經過期，開始更新...");
             exchangeRateService.fetchAndSaveRates("USD");
