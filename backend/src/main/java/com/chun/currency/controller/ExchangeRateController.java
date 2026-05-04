@@ -17,7 +17,7 @@ public class ExchangeRateController {
 
     @PostMapping("/fetch")
     public ResponseEntity<String> fetchRates(
-            @RequestParam(defaultValue = "USD") String baseCurrency){
+            @RequestParam(defaultValue = "USD") String baseCurrency) {
 
         exchangeRateService.fetchAndSaveRates(baseCurrency.toUpperCase());
 
@@ -25,7 +25,7 @@ public class ExchangeRateController {
     }
 
     @GetMapping("/currencies")
-    public ResponseEntity<List<String>> getAvailableCurrencies(){
+    public ResponseEntity<List<String>> getAvailableCurrencies() {
         return ResponseEntity.ok(exchangeRateService.getAvailableCurrencies());
     }
 

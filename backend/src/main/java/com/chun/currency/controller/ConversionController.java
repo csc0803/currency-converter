@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -20,6 +21,14 @@ public class ConversionController {
     @PostMapping("/convert")
     public ResponseEntity<ConvertResponse> convert(@RequestBody ConvertRequest request){
         return ResponseEntity.ok(conversionService.convert(request));
+    }
+
+    @GetMapping("/convertAll")
+    public ResponseEntity<List<ConvertResponse>> convert(
+            @RequestParam String fromCurrency,
+            @RequestParam BigDecimal amount
+    ){
+        return ResponseEntity.ok(conversionService.convertAll(fromCurrency, amount));
     }
 
     @GetMapping("/history")
