@@ -6,6 +6,9 @@ const API = axios.create({
 
 export const convertCurrency = (data) => API.post('/conversions/convert', data);
 
+export const convertAll = (fromCurrency, amount) =>
+  API.get(`/conversions/convertAll?fromCurrency=${fromCurrency}&amount=${amount}`);
+
 export const getConversionHistory = () => API.get('/conversions/history');
 
 export const fetchLatestRates = (baseCurrency = 'USD') => 

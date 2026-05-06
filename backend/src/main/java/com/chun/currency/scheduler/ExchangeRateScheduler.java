@@ -19,7 +19,7 @@ public class ExchangeRateScheduler {
     private final ExchangeRateService exchangeRateService;
     private final ExchangeRateRepository exchangeRateRepository;
 
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "0 0 * * * *")
     public void autoFetchRates(){
         Optional<ExchangeRate> latestUpdatedAt =
                 exchangeRateRepository.findTopByOrderByUpdatedAtDesc();

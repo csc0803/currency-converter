@@ -8,7 +8,6 @@ export default function HistoryTable({ refreshTrigger }) {
     getConversionHistory()
       .then((res) => {
         setHistory(res.data)
-        console.log(res.data)
       })
       .catch((err) => console.error("無法取得歷史紀錄", err));
   }, [refreshTrigger]);
